@@ -35,12 +35,10 @@
         }
 
         function callAPI(txt) {
-            console.log(txt);
             var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-            url += '?' + $.param({
-                        'api-key': "d306567891f44528b129ce3f141317b9",
-                        'q': "trump"
-                    });
+            url += '?' + 'api-key=' + "d306567891f44528b129ce3f141317b9";
+            url += '&' + 'q=' + txt;
+            console.log(url);
             $.ajax({
                 url: url,
                 method: 'GET',
@@ -55,6 +53,7 @@
                 }
                 console.log(response);
             }).fail(function(err) {
+                document.getElementById('news').innerHTML = "<br />"+"找不到新聞"+"<br />";
                 throw err;
             });
         }
