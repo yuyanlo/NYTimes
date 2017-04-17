@@ -51,12 +51,12 @@
             var txt = getSelectText();
             if(txt!=null){
                 $("rs_081125").innerHTML="您选取的内容是:<br />"+txt;
-                //$("rs_081125").innerHTML+="您选取的内容是:<br />"+txt;
                 callapi2(txt);
             }
         } /*]]>*/
         function callapi2(txt) {
             // Built by LucyBot. www.lucybot.com
+            console.log(txt);
             var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
             url += '?' + $.param({
                         'api-key': "d306567891f44528b129ce3f141317b9",
@@ -66,6 +66,7 @@
                 url: url,
                 method: 'GET',
             }).done(function(result) {
+                $("rs_081125").innerHTML+=result;
                 console.log(result);
             }).fail(function(err) {
                 throw err;
@@ -88,7 +89,7 @@
                 },
                 type: 'GET',
                 success: function (response) {
-                    $("rs_081125").innerHTML += "<p>"+txt+"</p>";
+                    $("rs_081125").innerHTML += "<p>"+response+"</p>";
                     //return response;
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
@@ -108,5 +109,8 @@
              });*/
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+
+    
 </BODY>
 </HTML>
