@@ -50,6 +50,9 @@
                         var news = "<a href="+doc[key].web_url+">"+title+"</a>";
                         document.getElementById('news').innerHTML += "<br />"+news+"<br/>";
                     }
+                    if (doc.length == 0) {
+                        document.getElementById('news').innerHTML += "<br />這個詞沒有搜尋結果<br/>";
+                    }
                 }
             }).fail(function(err) {
                 alert(response);
