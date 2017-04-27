@@ -87,8 +87,12 @@
         function f(){
             var txt = getSelectText();
             if(txt!=null && txt != ''){
-                document.getElementById('content').innerHTML = "您選取的內容是:<br />"+txt;
+                if (txt.toString().length>20) {
+                    document.getElementById('content').innerHTML = "您選取的關鍵字是:<br />"+"關鍵字太長";
+                }else{
+                document.getElementById('content').innerHTML = "您選取的關鍵字是:<br />"+txt;
                 callAPI(txt);
+                }         
             }
         } /*]]>*/
     </script>
